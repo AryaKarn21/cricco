@@ -1,0 +1,30 @@
+services:
+  # 1. CRIICO Corporate Website
+  - type: web
+    name: criico-corporate-website
+    runtime: node
+    plan: free
+    rootDir: criico-corporate-website
+    buildCommand: npm install && npx prisma db push && npm run build
+    startCommand: npm run start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        value: file:./corporate.db
+
+  # 2. CRIICO Cricket Match Centre & Platform
+  - type: web
+    name: criico-platform
+    runtime: node
+    plan: free
+    rootDir: criico-platform
+    buildCommand: npm install && npx prisma db push && npm run build
+    startCommand: npm run start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        value: file:./dev.db
+      - key: JWT_SECRET
+        generateValue: true
