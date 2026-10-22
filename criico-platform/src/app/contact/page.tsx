@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
+import { submitContactAction } from "@/app/actions/contact";
 
 export default function ContactPage() {
   const [name, setName] = useState("");
@@ -40,19 +41,21 @@ export default function ContactPage() {
     }
 
     try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, subject, message, botField }),
+      // Direct Server Action invocation (no client fetch call)
+      const res = await submitContactAction({
+        name,
+        email,
+        subject,
+        message,
+        botField,
       });
 
-      const data = await res.json();
       if (!res.ok) {
-        throw new Error(data.error || "Failed to submit your message.");
+        throw new Error(res.error || "Failed to submit your message.");
       }
 
       setSuccess(true);
-      setReferenceId(data.id || "");
+      setReferenceId(res.id || "");
       setName("");
       setEmail("");
       setMessage("");

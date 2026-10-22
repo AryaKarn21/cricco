@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { Send, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
+import { submitCorporateContactAction } from "@/app/actions/contact";
 
 interface ContactFormProps {
   defaultCategory?: string;
@@ -51,22 +52,17 @@ export default function ContactForm({ defaultCategory = "Partnership" }: Contact
     }
 
     try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await res.json();
+      // Direct Server Action invocation (no client fetch call)
+      const res = await submitCorporateContactAction(formData);
 
       if (!res.ok) {
-        throw new Error(data.error || "Failed to submit enquiry.");
+        throw new Error(res.error || "Failed to submit enquiry.");
       }
 
       setStatus("success");
-      setFeedback(data.message || "Enquiry successfully recorded.");
-      if (data.enquiryId) {
-        setReferenceId(data.enquiryId);
+      setFeedback(res.message || "Enquiry successfully recorded.");
+      if (res.enquiryId) {
+        setReferenceId(res.enquiryId);
       }
       setFormData({
         name: "",

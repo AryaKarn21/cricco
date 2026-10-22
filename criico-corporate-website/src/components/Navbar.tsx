@@ -10,10 +10,10 @@ import { Menu, X, ArrowRight, ArrowUpRight } from "lucide-react";
 const SHOW_MATCH_CENTRE_HEADER = false;
 
 const navItems = [
-  { name: "About", href: "/about" },
+  { name: "About", href: "/#about" },
   { name: "What We Do", href: "/what-we-do" },
   { name: "Our Impact", href: "/impact" },
-  { name: "Partnerships", href: "/partnerships" },
+  { name: "Partnerships", href: "/#partnerships" },
   { name: "Contact", href: "/contact" },
 ];
 
@@ -39,12 +39,12 @@ export default function Navbar() {
       className={`sticky top-0 z-50 w-full bg-white transition-all duration-200 ${
         scrolled
           ? "border-b border-slate-200 shadow-sm py-2.5"
-          : "border-b border-slate-100 py-3.5"
+          : "border-b border-slate-100 py-3 sm:py-3.5"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-12 sm:h-14">
-          {/* Logo on the left */}
+          {/* Official CRIICO Logo */}
           <Link
             href="/"
             className="flex-shrink-0 flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0647B9] rounded-lg group py-1"
@@ -54,8 +54,8 @@ export default function Navbar() {
               <Image
                 src="/criico-logo.png"
                 alt="CRIICO Official Logo"
-                width={150}
-                height={78}
+                width={160}
+                height={84}
                 className="object-contain h-10 sm:h-12 w-auto"
                 priority
               />
@@ -83,7 +83,7 @@ export default function Navbar() {
             })}
           </nav>
 
-          {/* Right Action: Prominent Blue "Partner With Us" Button */}
+          {/* Right Action: Prominent Blue "Become a Partner" Button */}
           <div className="hidden lg:flex items-center gap-3">
             {/* Preserved Match Centre link (temporarily hidden per requirements) */}
             {SHOW_MATCH_CENTRE_HEADER && (
@@ -100,8 +100,8 @@ export default function Navbar() {
             )}
 
             <Link
-              href="/partnerships"
-              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg text-sm font-bold bg-[#0647B9] hover:bg-[#053aa0] text-white transition-all shadow-sm hover:shadow-md hover:scale-[1.01] group"
+              href="/#partnerships"
+              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full text-sm font-bold bg-[#0647B9] hover:bg-[#053aa0] text-white transition-all shadow-sm hover:shadow-md hover:scale-[1.01] group"
             >
               <span>Partner With Us</span>
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -158,8 +158,8 @@ export default function Navbar() {
               )}
 
               <Link
-                href="/partnerships"
-                className="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-lg text-sm font-bold bg-[#0647B9] text-white text-center shadow-sm hover:bg-[#053aa0] transition-colors"
+                href="/#partnerships"
+                className="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-full text-sm font-bold bg-[#0647B9] text-white text-center shadow-sm hover:bg-[#053aa0] transition-colors"
               >
                 <span>Partner With Us</span>
                 <ArrowRight className="w-4 h-4" />

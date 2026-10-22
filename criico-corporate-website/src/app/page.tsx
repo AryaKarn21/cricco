@@ -9,152 +9,167 @@ import {
   CheckCircle2,
   TrendingUp,
   HeartHandshake,
+  ChevronDown,
+  Building2,
+  Medal,
+  Tv,
 } from "lucide-react";
 import ContactForm from "@/components/ContactForm";
 
 export default function HomePage() {
   return (
     <div className="flex flex-col bg-white">
-      {/* 1. CINEMATIC CRICKET HERO SECTION (Clean Two-Column Layout) */}
+      {/* 1. CINEMATIC CRICKET HERO SECTION (Full-Width Panoramic Background like Mockup) */}
       <section className="relative overflow-hidden bg-[#0B1F49] text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 min-h-[580px] lg:min-h-[660px] flex items-center">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center w-full">
-            {/* Left Content Column */}
-            <div className="lg:col-span-7 z-10">
-              {/* Eyebrow Label with Red Accent Line */}
-              <div className="flex items-center gap-2.5 mb-5">
-                <span className="w-6 h-0.5 bg-[#ED1C2E] rounded-full" />
-                <span className="text-xs uppercase font-bold tracking-[0.2em] text-slate-300">
-                  NEPAL&apos;S SPORTS-TECHNOLOGY PLATFORM
-                </span>
-              </div>
+        {/* Full-Width Panoramic Background Image */}
+        <div className="absolute inset-0 z-0 pointer-events-none select-none">
+          <Image
+            src="/hero-cricket-batsman.jpg"
+            alt="CRIICO cricket batsman in royal blue jersey #17 facing stadium sunset"
+            fill
+            priority
+            className="object-cover object-right lg:object-[78%_center]"
+            sizes="100vw"
+          />
+          {/* Deep Navy Gradient Overlay on the left to ensure 100% text readability */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0B1F49] via-[#0B1F49]/70 to-transparent w-full lg:w-1/2" />
+          {/* Mobile dark overlay */}
+          <div className="absolute inset-0 bg-[#0B1F49]/70 lg:hidden" />
+        </div>
 
-              {/* Main Headline with Highlighted Opportunity */}
-              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.1] mb-5">
-                Connecting Cricket. <br />
-                Creating{" "}
-                <span className="text-[#ED1C2E] relative inline-block">
-                  Opportunity.
-                  {/* Subtle Red Curved Underline Swoosh */}
-                  <svg
-                    className="absolute -bottom-2 sm:-bottom-2.5 left-0 w-full h-2.5 sm:h-3 text-[#ED1C2E]"
-                    viewBox="0 0 240 16"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M3 13C60 3 180 3 237 13"
-                      stroke="currentColor"
-                      strokeWidth="3.5"
-                      strokeLinecap="round"
-                    />
+        {/* Hero Foreground Content */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-20 lg:pt-24 pb-8 min-h-[580px] lg:min-h-[680px] flex flex-col justify-between">
+          <div className="max-w-2xl py-6">
+            {/* Eyebrow Label with Red Accent Line */}
+            <div className="flex items-center gap-2.5 mb-5">
+              <span className="w-7 h-0.5 bg-[#ED1C2E] rounded-full" />
+              <span className="text-xs sm:text-sm uppercase font-bold tracking-[0.2em] text-slate-300">
+                NEPAL&apos;S SPORTS-TECHNOLOGY PLATFORM
+              </span>
+            </div>
+
+            {/* Main Headline with Opportunity in Red + Swoosh */}
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.08] mb-6">
+              Connecting Cricket. <br />
+              Creating{" "}
+              <span className="text-[#ED1C2E] relative inline-block">
+                Opportunity.
+                {/* Red curved underline swoosh */}
+                <svg
+                  className="absolute -bottom-2 sm:-bottom-3 left-0 w-full h-3 sm:h-4 text-[#ED1C2E]"
+                  viewBox="0 0 240 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M3 13C60 3 180 3 237 13"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              </span>
+            </h1>
+
+            {/* Supporting Text */}
+            <p className="text-base sm:text-lg text-slate-300 font-normal leading-relaxed mb-8 max-w-lg">
+              Technology, stories and community powering the next generation of cricket.
+            </p>
+
+            {/* Action Buttons */}
+            <div className="flex flex-wrap items-center gap-4 mb-10">
+              <a
+                href="#services"
+                className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full text-sm font-bold bg-[#ED1C2E] hover:bg-[#d61828] text-white transition-all shadow-lg shadow-red-900/30 hover:scale-[1.02] group"
+              >
+                <span>Discover CRIICO</span>
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </a>
+
+              <Link
+                href="/about"
+                className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full text-sm font-bold bg-white/10 hover:bg-white/20 text-white border border-white/40 backdrop-blur-xs transition-all hover:scale-[1.02]"
+              >
+                <span>Our Vision</span>
+              </Link>
+            </div>
+
+            {/* Three Compact Feature Links with Line Icons */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 pt-6 border-t border-white/15">
+              <a
+                href="#services"
+                className="flex items-center gap-2.5 text-xs sm:text-sm font-semibold text-slate-200 hover:text-white transition-colors group"
+              >
+                <div className="w-7 h-7 rounded-full border border-white/30 flex items-center justify-center text-white group-hover:border-[#ED1C2E] group-hover:text-[#ED1C2E] transition-colors shrink-0">
+                  <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="m4.93 4.93 4.24 4.24" />
+                    <path d="m14.83 14.83 4.24 4.24" />
+                    <path d="M14.83 9.17a4 4 0 0 0-5.66 5.66" />
                   </svg>
-                </span>
-              </h1>
+                </div>
+                <span>Cricket &amp; Community</span>
+              </a>
 
-              {/* Supporting Text */}
-              <p className="text-base sm:text-lg text-slate-300 font-normal leading-relaxed mb-8 max-w-xl">
-                Technology, stories and community powering the next generation of cricket.
-              </p>
+              <a
+                href="#services"
+                className="flex items-center gap-2.5 text-xs sm:text-sm font-semibold text-slate-200 hover:text-white transition-colors group"
+              >
+                <div className="w-7 h-7 rounded-full border border-white/30 flex items-center justify-center text-white group-hover:border-[#0647B9] group-hover:text-blue-400 transition-colors shrink-0">
+                  <Cpu className="w-3.5 h-3.5" />
+                </div>
+                <span>Digital Experiences</span>
+              </a>
 
-              {/* Action Buttons */}
-              <div className="flex flex-wrap items-center gap-4 mb-10">
-                <a
-                  href="#services"
-                  className="inline-flex items-center justify-center gap-2 px-7 py-3 rounded-full text-sm font-bold bg-[#ED1C2E] hover:bg-[#d61828] text-white transition-all shadow-md hover:scale-[1.02] group"
-                >
-                  <span>Discover CRIICO</span>
-                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                </a>
-
-                <Link
-                  href="/about"
-                  className="inline-flex items-center justify-center gap-2 px-7 py-3 rounded-full text-sm font-bold bg-white/10 hover:bg-white/20 text-white border border-white/30 backdrop-blur-xs transition-all hover:scale-[1.02]"
-                >
-                  <span>Our Vision</span>
-                </Link>
-              </div>
-
-              {/* Three Compact Feature Links with Line Icons */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 pt-6 border-t border-white/15">
-                <a
-                  href="#services"
-                  className="flex items-center gap-2.5 text-xs sm:text-sm font-semibold text-slate-200 hover:text-white transition-colors group"
-                >
-                  <div className="w-7 h-7 rounded-full border border-white/30 flex items-center justify-center text-white group-hover:border-[#ED1C2E] group-hover:text-[#ED1C2E] transition-colors shrink-0">
-                    <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <circle cx="12" cy="12" r="10" />
-                      <path d="m4.93 4.93 4.24 4.24" />
-                      <path d="m14.83 14.83 4.24 4.24" />
-                      <path d="M14.83 9.17a4 4 0 0 0-5.66 5.66" />
-                    </svg>
-                  </div>
-                  <span>Cricket &amp; Community</span>
-                </a>
-
-                <a
-                  href="#services"
-                  className="flex items-center gap-2.5 text-xs sm:text-sm font-semibold text-slate-200 hover:text-white transition-colors group"
-                >
-                  <div className="w-7 h-7 rounded-full border border-white/30 flex items-center justify-center text-white group-hover:border-[#0647B9] group-hover:text-blue-400 transition-colors shrink-0">
-                    <Cpu className="w-3.5 h-3.5" />
-                  </div>
-                  <span>Digital Experiences</span>
-                </a>
-
-                <a
-                  href="#services"
-                  className="flex items-center gap-2.5 text-xs sm:text-sm font-semibold text-slate-200 hover:text-white transition-colors group"
-                >
-                  <div className="w-7 h-7 rounded-full border border-white/30 flex items-center justify-center text-white group-hover:border-[#ED1C2E] group-hover:text-[#ED1C2E] transition-colors shrink-0">
-                    <Trophy className="w-3.5 h-3.5" />
-                  </div>
-                  <span>Talent &amp; Tournaments</span>
-                </a>
-              </div>
+              <a
+                href="#services"
+                className="flex items-center gap-2.5 text-xs sm:text-sm font-semibold text-slate-200 hover:text-white transition-colors group"
+              >
+                <div className="w-7 h-7 rounded-full border border-white/30 flex items-center justify-center text-white group-hover:border-[#ED1C2E] group-hover:text-[#ED1C2E] transition-colors shrink-0">
+                  <Trophy className="w-3.5 h-3.5" />
+                </div>
+                <span>Talent &amp; Tournaments</span>
+              </a>
             </div>
+          </div>
 
-            {/* Right Visual Column (Cleanly Contained Batsman & Sunset Stadium Artwork) */}
-            <div className="lg:col-span-5 relative">
-              <div className="relative w-full aspect-[4/3] sm:aspect-[16/10] lg:h-[480px] rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-[#071533]">
-                <Image
-                  src="/hero-cricket-batsman.jpg"
-                  alt="Professional cricket batsman in blue CRIICO jersey facing the stadium at golden hour sunset"
-                  fill
-                  priority
-                  className="object-cover object-center"
-                  sizes="(max-width: 1024px) 100vw, 42vw"
-                />
-                {/* Subtle bottom-edge gradient to harmonize with container */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0B1F49]/70 via-transparent to-transparent pointer-events-none" />
-                {/* Corner brand accent line */}
-                <div className="absolute top-0 right-0 w-24 h-1 bg-[#ED1C2E]" />
+          {/* Bottom Center "Scroll to Explore" Indicator */}
+          <div className="w-full flex justify-center pb-4 pt-4">
+            <a
+              href="#about"
+              className="inline-flex flex-col items-center gap-1.5 text-xs text-slate-400 hover:text-white transition-colors group"
+              aria-label="Scroll to about section"
+            >
+              <span className="font-medium tracking-wide text-[11px] uppercase">Scroll to Explore</span>
+              <div className="w-7 h-7 rounded-full border border-slate-400/40 flex items-center justify-center group-hover:border-white transition-colors animate-bounce-slow">
+                <ChevronDown className="w-3.5 h-3.5 text-slate-300 group-hover:text-white" />
               </div>
-            </div>
+            </a>
           </div>
         </div>
       </section>
 
-      {/* 2. REBUILT ABOUT SECTION (Clean Two-Column Grid with Himalayan Peaks Illustration Behind) */}
-      <section id="about" className="relative py-16 sm:py-20 lg:py-24 bg-[#EEF5FF] border-b border-blue-100 overflow-hidden">
-        {/* Dedicated Background Graphic Element (Himalayan Peaks - No Text, No Overlap) */}
-        <div className="absolute right-0 bottom-0 top-0 w-full sm:w-2/3 lg:w-1/2 pointer-events-none z-0 select-none opacity-50 mix-blend-multiply">
+      {/* 2. REBUILT ABOUT SECTION (Clean Two-Column Grid with Himalayan Peaks Illustration) */}
+      <section id="about" className="relative py-16 sm:py-20 lg:py-24 bg-white border-b border-slate-100 overflow-hidden scroll-mt-16">
+        {/* Subtle Himalayan Peaks Graphic (Behind Content Layer Only, No Text) */}
+        <div className="absolute right-0 bottom-0 top-0 w-full sm:w-2/3 lg:w-1/2 pointer-events-none z-0 select-none opacity-90 flex items-end justify-end">
           <Image
-            src="/himalayan-peaks.svg"
-            alt=""
-            fill
-            className="object-contain object-bottom-right"
+            src="/himalaya-peaks.png"
+            alt="Himalayan peaks illustration"
+            width={750}
+            height={300}
+            className="w-full max-w-2xl h-auto object-contain object-bottom-right"
             aria-hidden="true"
           />
         </div>
 
-        {/* Foreground Content Container */}
+        {/* Content Container (Layered in front of the graphic) */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-            {/* Left Column: Label + Headline */}
+            {/* Left Column: Label + Heading */}
             <div className="lg:col-span-5">
               <div className="flex items-center gap-2 mb-3">
-                <span className="w-5 h-0.5 bg-[#ED1C2E] rounded-full" />
+                <span className="w-6 h-0.5 bg-[#ED1C2E] rounded-full" />
                 <span className="text-xs uppercase font-bold tracking-widest text-[#0647B9]">
                   ABOUT CRIICO
                 </span>
@@ -165,12 +180,12 @@ export default function HomePage() {
               </h2>
             </div>
 
-            {/* Middle Divider on Desktop */}
+            {/* Vertical Separator on Desktop */}
             <div className="hidden lg:block lg:col-span-1">
               <div className="w-px h-24 bg-blue-200/80 mx-auto" />
             </div>
 
-            {/* Right Column: Description + Link */}
+            {/* Right Column: Narrative + Link */}
             <div className="lg:col-span-6">
               <p className="text-base sm:text-lg text-slate-700 leading-relaxed font-normal max-w-xl">
                 CRIICO is a cricket-focused digital platform from Nepal, working to make the game more accessible, visible, and impactful for players, fans, tournaments and communities.
@@ -180,7 +195,7 @@ export default function HomePage() {
                   href="/about"
                   className="inline-flex items-center gap-2 text-sm font-bold text-[#0647B9] hover:text-[#053aa0] group"
                 >
-                  <span>Explore our full journey &amp; values</span>
+                  <span>Explore Our Story</span>
                   <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1 text-[#ED1C2E]" />
                 </Link>
               </div>
@@ -189,7 +204,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 3. CORE SERVICES SECTION (Three Premium White Cards) */}
+      {/* 3. CORE SERVICES SECTION (Three Premium Responsive White Cards) */}
       <section id="services" className="py-20 lg:py-28 bg-[#F5F9FF] border-b border-slate-200 scroll-mt-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
@@ -267,7 +282,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 4. MISSION STATEMENT */}
+      {/* 4. MISSION STATEMENT (Mandated Light-Blue Section) */}
       <section className="py-20 lg:py-24 bg-[#EEF5FF] border-b border-blue-100 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="max-w-3xl mx-auto">
@@ -292,8 +307,120 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 5. GRASSROOTS COMMITMENT & OPERATING PRINCIPLES */}
-      <section className="py-20 lg:py-28 bg-white border-b border-slate-200">
+      {/* 5. DEDICATED PARTNERSHIPS SECTION (Let's Grow Cricket Together + Working Form) */}
+      <section id="partnerships" className="py-20 lg:py-28 bg-white border-b border-slate-200 scroll-mt-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Header */}
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="text-[#0647B9] text-xs font-bold uppercase tracking-wider">Collaboration Ecosystem</span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#0B1F49] tracking-tight mt-2 mb-4">
+              Let&apos;s Grow Cricket Together.
+            </h2>
+            <div className="w-16 h-1 bg-[#ED1C2E] mx-auto mb-5 rounded-full" />
+            <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
+              Partner with CRIICO to help connect cricket communities, support emerging talent, and create meaningful digital experiences.
+            </p>
+          </div>
+
+          {/* 5 Opportunities Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 mb-16">
+            {/* 1. Clubs & Academies */}
+            <div className="bg-[#F5F9FF] border border-blue-100 rounded-xl p-5 hover:border-[#0647B9] transition-colors">
+              <div className="w-10 h-10 rounded-lg bg-[#EEF5FF] text-[#0647B9] flex items-center justify-center mb-3">
+                <Building2 className="w-5 h-5" />
+              </div>
+              <h3 className="font-bold text-[#0B1F49] text-sm mb-1.5">Clubs &amp; Academies</h3>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Free player registries, digital match records, and talent tracking tools for coaching staffs.
+              </p>
+            </div>
+
+            {/* 2. Tournament Organizers */}
+            <div className="bg-[#F5F9FF] border border-blue-100 rounded-xl p-5 hover:border-[#0647B9] transition-colors">
+              <div className="w-10 h-10 rounded-lg bg-[#EEF5FF] text-[#0647B9] flex items-center justify-center mb-3">
+                <Trophy className="w-5 h-5 text-[#ED1C2E]" />
+              </div>
+              <h3 className="font-bold text-[#0B1F49] text-sm mb-1.5">Tournament Organizers</h3>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Automated fixtures, live public points tables, and ball-by-ball scoring with zero software setup costs.
+              </p>
+            </div>
+
+            {/* 3. Sponsors & Brands */}
+            <div className="bg-[#F5F9FF] border border-blue-100 rounded-xl p-5 hover:border-[#0647B9] transition-colors">
+              <div className="w-10 h-10 rounded-lg bg-[#EEF5FF] text-[#0647B9] flex items-center justify-center mb-3">
+                <Medal className="w-5 h-5 text-[#0647B9]" />
+              </div>
+              <h3 className="font-bold text-[#0B1F49] text-sm mb-1.5">Sponsors &amp; Brands</h3>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Support authentic regional tournaments with high-visibility, community-rooted brand partnerships.
+              </p>
+            </div>
+
+            {/* 4. Local Cricket Communities */}
+            <div className="bg-[#F5F9FF] border border-blue-100 rounded-xl p-5 hover:border-[#0647B9] transition-colors">
+              <div className="w-10 h-10 rounded-lg bg-[#EEF5FF] text-[#0647B9] flex items-center justify-center mb-3">
+                <Users className="w-5 h-5 text-[#ED1C2E]" />
+              </div>
+              <h3 className="font-bold text-[#0B1F49] text-sm mb-1.5">Local Communities</h3>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Promote regional district matches, support volunteers, and preserve local cricketing history.
+              </p>
+            </div>
+
+            {/* 5. Media & Tech Collaborators */}
+            <div className="bg-[#F5F9FF] border border-blue-100 rounded-xl p-5 hover:border-[#0647B9] transition-colors">
+              <div className="w-10 h-10 rounded-lg bg-[#EEF5FF] text-[#0647B9] flex items-center justify-center mb-3">
+                <Tv className="w-5 h-5 text-[#0647B9]" />
+              </div>
+              <h3 className="font-bold text-[#0B1F49] text-sm mb-1.5">Media &amp; Technology</h3>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Broadcasting integrations, match archive distribution, and verified cricket API collaborations.
+              </p>
+            </div>
+          </div>
+
+          {/* Partnership Enquiry Form */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start bg-[#EEF5FF] rounded-3xl p-6 sm:p-10 border border-blue-100">
+            <div className="lg:col-span-5">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="w-5 h-0.5 bg-[#ED1C2E] rounded-full" />
+                <span className="text-xs uppercase font-bold tracking-widest text-[#0647B9]">
+                  PARTNERSHIP ENQUIRY
+                </span>
+              </div>
+              <h3 className="text-2xl sm:text-3xl font-black text-[#0B1F49] mb-3">
+                Become a Partner
+              </h3>
+              <p className="text-slate-600 text-sm leading-relaxed mb-6">
+                Tell us about your organization and how we can collaborate. Our partnerships team reviews submissions daily and responds directly to your email.
+              </p>
+
+              <div className="space-y-3 text-xs text-slate-600 font-medium">
+                <div className="flex items-center gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-[#0647B9]" />
+                  <span>Transparent collaboration agreements</span>
+                </div>
+                <div className="flex items-center gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-[#0647B9]" />
+                  <span>Free digital onboarding for community tournaments</span>
+                </div>
+                <div className="flex items-center gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-[#0647B9]" />
+                  <span>Direct technical and media support</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="lg:col-span-7 bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+              <ContactForm defaultCategory="Partnership" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 6. GRASSROOTS COMMITMENT & OPERATING PRINCIPLES */}
+      <section className="py-20 lg:py-28 bg-[#F5F9FF] border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             <div className="lg:col-span-6">
@@ -365,81 +492,6 @@ export default function HomePage() {
                   <span>Kathmandu, Nepal</span>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 6. PARTNERSHIP CALL TO ACTION BANNER */}
-      <section className="py-16 bg-[#0B1F49] text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-gradient-to-r from-[#0B1F49] via-[#071533] to-[#0647B9] border-2 border-white/10 rounded-3xl p-8 sm:p-12 flex flex-col md:flex-row items-center justify-between gap-8 shadow-xl">
-            <div className="max-w-2xl">
-              <span className="text-[#ED1C2E] text-xs font-bold uppercase tracking-wider">Collaborate with CRIICO</span>
-              <h2 className="text-2xl sm:text-3xl font-black text-white mt-1 mb-3">
-                Are You Organizing a Tournament or Leading a Cricket Academy?
-              </h2>
-              <p className="text-sm sm:text-base text-slate-200 leading-relaxed">
-                Provide your players with live scoring, digital fixtures, and verified career match logs. We offer free digital onboarding for community tournaments across Nepal.
-              </p>
-            </div>
-            <div className="flex flex-col sm:flex-row gap-3.5 shrink-0 w-full sm:w-auto">
-              <Link
-                href="/partnerships"
-                className="inline-flex items-center justify-center px-7 py-3 rounded-full text-sm font-bold bg-[#ED1C2E] hover:bg-[#d61425] text-white transition-all text-center shadow-md hover:scale-[1.02]"
-              >
-                Partner With Us
-              </Link>
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center px-7 py-3 rounded-full text-sm font-bold bg-white/10 hover:bg-white/20 text-white border border-white/20 transition-all text-center hover:scale-[1.02]"
-              >
-                Direct Enquiry
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 7. CONTACT SECTION */}
-      <section id="contact-section" className="py-20 lg:py-28 bg-[#F5F9FF]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-            <div className="lg:col-span-5">
-              <span className="text-[#0647B9] text-xs font-bold uppercase tracking-wider">Get in Touch</span>
-              <h2 className="text-3xl sm:text-4xl font-black text-[#0B1F49] mt-2 mb-4">
-                Connect With Our Team
-              </h2>
-              <div className="w-16 h-1 bg-[#ED1C2E] mb-6 rounded-full" />
-              <p className="text-slate-600 text-sm leading-relaxed mb-8">
-                Whether you represent a district cricket association, a commercial sponsor, an educational institution, or a local club, our team is eager to connect.
-              </p>
-
-              <div className="bg-white border border-slate-200 rounded-2xl p-6 space-y-4 text-sm text-slate-700 shadow-sm">
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-[#EEF5FF] flex items-center justify-center text-[#0647B9] shrink-0">
-                    <HeartHandshake className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <div className="text-xs text-slate-500 font-semibold">Headquarters</div>
-                    <div className="font-bold text-[#0B1F49]">Kathmandu, Nepal</div>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-[#EEF5FF] flex items-center justify-center text-[#0647B9] shrink-0">
-                    <TrendingUp className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <div className="text-xs text-slate-500 font-semibold">Platform Focus</div>
-                    <div className="font-bold text-[#0B1F49]">Sports-Technology &amp; Grassroots Media</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="lg:col-span-7">
-              <ContactForm defaultCategory="Partnership" />
             </div>
           </div>
         </div>
