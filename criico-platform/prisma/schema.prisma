@@ -1,0 +1,137 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id @default(cuid())
+  name         String
+  email        String   @unique
+  passwordHash String
+  role         String   @default("USER")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Team {
+  id        String   @id @default(cuid())
+  name      String
+  shortName String?
+  logoUrl   String?
+  players   Player[]
+  homeMatches Match[] @relation("HomeTeam")
+  awayMatches Match[] @relation("AwayTeam")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Player {
+  id          String   @id @default(cuid())
+  name        String
+  role        String?
+  teamId      String?
+  team        Team?    @relation(fields: [teamId], references: [id], onDelete: SetNull)
+  photoUrl    String?
+  battingStyle String?
+  bowlingStyle String?
+  bio         String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Tournament {
+  id          String   @id @default(cuid())
+  name        String
+  slug        String   @unique
+  description String?
+  location    String?
+  startsAt    DateTime?
+  endsAt      DateTime?
+  status      String   @default("UPCOMING")
+  matches     Match[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Match {
+  id            String      @id @default(cuid())
+  homeTeamId    String
+  awayTeamId    String
+  homeTeam      Team        @relation("HomeTeam", fields: [homeTeamId], references: [id])
+  awayTeam      Team        @relation("AwayTeam", fields: [awayTeamId], references: [id])
+  tournamentId  String?
+  tournament    Tournament? @relation(fields: [tournamentId], references: [id], onDelete: SetNull)
+  venue         String?
+  startsAt      DateTime
+  status        String      @default("UPCOMING")
+  homeScore     String?
+  awayScore     String?
+  overs         String?
+  resultText    String?
+  source        String      @default("MANUAL")
+  externalId    String?
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  @@index([status, startsAt])
+}
+
+model Article {
+  id          String        @id @default(cuid())
+  title       String
+  slug        String        @unique
+  excerpt     String?
+  body        String
+  imageUrl    String?
+  category    String        @default("News")
+  authorName  String?
+  status      String        @default("DRAFT")
+  publishedAt DateTime?
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  @@index([status, publishedAt])
+}
+
+model Video {
+  id          String   @id @default(cuid())
+  title       String
+  description String?
+  embedUrl    String
+  thumbnailUrl String?
+  published   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+}
+
+model Event {
+  id          String   @id @default(cuid())
+  title       String
+  description String?
+  location    String
+  competition String
+  startsAt    DateTime
+  registrationUrl String?
+  published   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model NewsletterSubscriber {
+  id          String   @id @default(cuid())
+  email       String   @unique
+  consentAt   DateTime @default(now())
+  createdAt   DateTime @default(now())
+}
+
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  subject   String?
+  message   String
+  readAt    DateTime?
+  createdAt DateTime @default(now())
+}
+

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 360" fill="none" preserveAspectRatio="xMaxYMid slice">
+  <defs>
+    <linearGradient id="peakGradFar" x1="500" y1="0" x2="500" y2="360" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#93C5FD" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#DBEAFE" stop-opacity="0.05" />
+    </linearGradient>
+    <linearGradient id="peakGradMid" x1="500" y1="40" x2="500" y2="360" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#60A5FA" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#BFDBFE" stop-opacity="0.1" />
+    </linearGradient>
+    <linearGradient id="peakGradSnow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#EFF6FF" stop-opacity="0.4" />
+    </linearGradient>
+    <linearGradient id="peakShadow" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#1D4ED8" stop-opacity="0.05" />
+    </linearGradient>
+  </defs>
+
+  <!-- Far Mountain Range (Highest Himalayan Peaks) -->
+  <path d="M50 360 L240 180 L360 250 L520 110 L640 210 L820 40 L940 160 L1000 120 L1000 360 Z" fill="url(#peakGradFar)" />
+
+  <!-- Main Central Peak (Mount Everest / Machapuchare Silhouette) -->
+  <!-- Left illuminated face -->
+  <polygon points="820,40 680,240 760,280 820,360" fill="url(#peakGradMid)" />
+  <polygon points="820,40 730,170 780,210 820,120" fill="url(#peakGradSnow)" />
+  <!-- Right shadow face -->
+  <polygon points="820,40 940,160 880,260 820,360" fill="url(#peakShadow)" />
+  <polygon points="820,40 890,130 850,170 820,100" fill="url(#peakGradSnow)" opacity="0.6" />
+
+  <!-- Secondary Peak (Left) -->
+  <polygon points="520,110 400,260 480,310 520,360" fill="url(#peakGradMid)" />
+  <polygon points="520,110 450,200 490,230 520,160" fill="url(#peakGradSnow)" />
+  <polygon points="520,110 610,210 570,290 520,360" fill="url(#peakShadow)" />
+
+  <!-- Foreground Mountain Ridge -->
+  <path d="M0 360 L120 280 L280 210 L440 280 L600 220 L760 270 L920 200 L1000 240 L1000 360 Z" fill="url(#peakGradFar)" opacity="0.7" />
+
+  <!-- Subtle Ridge Accents & Crevasses -->
+  <polyline points="820,40 800,110 830,170 810,250 820,360" stroke="#93C5FD" stroke-width="1.5" stroke-opacity="0.4" />
+  <polyline points="520,110 510,180 535,240 520,360" stroke="#93C5FD" stroke-width="1.5" stroke-opacity="0.3" />
+</svg>
